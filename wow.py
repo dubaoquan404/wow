@@ -64,7 +64,7 @@ def Enter(name):
  
 def maxWindows(name): 
 	#全屏
-	win32gui.ShowWindow(name, 0)
+	#win32gui.ShowWindow(name, 0)
 	win32gui.ShowWindow(name, 1)
 	win32gui.ShowWindow(name,win32con.SW_MAXIMIZE)
 
@@ -74,8 +74,7 @@ def maxWindows(name):
 # PressOnce(9)   # TAB
 
 # t1=win32gui.GetDlgItem(wow,1412)
-# t2=win32gui.GetDlgItem(wow,1)
-#获取窗口左上角和右下角坐标 
+# t2=win32gui.GetDlgItem(wow,1time.sleep(5)#获取窗口左上角和右下角坐标 
 # left, top, right, bottom = win32gui.GetWindowRect(wow)
 # LeftClick()
 def exec():
@@ -86,19 +85,27 @@ def exec():
 	battle=win32gui.FindWindow(None,titlename)
 	wow=win32gui.FindWindow(None,titlenamewow)
 	#关闭wow窗口
-	#closeWindow(wow)
+	closeWindow(wow)
 	#战网窗口最大化
 	maxWindows(battle)
 	#回车 启动wow
-	#Enter(battle)
-	time.sleep(2)
+	Enter(battle)
+	time.sleep(5)
 	maxWindows(wow)
-	#选择服务器
-	#servers = win32gui.FindWindowEx(wow, None, None,u'服务器选择')#获取hld下第一个为edit控件的句柄
-	left, top, right, bottom = win32gui.GetWindowRect(wow)
-	print(left)
-	print(top)
-	print(right)
-	print(bottom)
 
-exec() 
+	time.sleep(10)
+	#选择服务器
+	servers = win32gui.FindWindowEx(win32gui.FindWindow(None,titlenamewow), None, None,u'服务器选择')
+	
+	left, top, right, bottom = win32gui.GetWindowRect(win32gui.FindWindow(None,titlenamewow))
+	# print(left)
+	# print(top)
+	# print(right)
+	# print(bottom)
+	time.sleep(5)
+	LeftDoubleClick(round(right/2),round(bottom/3.5))
+	#time.sleep(60*5)
+	time.sleep(60)
+	
+while (1):
+	exec() 
