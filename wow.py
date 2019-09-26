@@ -26,7 +26,7 @@
 
 
 
-import win32gui, win32api, win32con,time
+import win32gui, win32api, win32con,time,random
  
 def closeWindow(name):
 	win32gui.PostMessage(name, win32con.WM_CLOSE, 0, 0)
@@ -78,6 +78,11 @@ def maxWindows(name):
 # left, top, right, bottom = win32gui.GetWindowRect(wow)
 # LeftClick()
 def exec():
+	#间隔时间
+	interval=random.randint(60*15,60*20);
+	print(interval)
+	print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+	print("开始启动wow")
 	classname = "Game"
 	titlename = "暴雪战网"
 	titlenamewow = "魔兽世界"
@@ -104,8 +109,11 @@ def exec():
 	# print(bottom)
 	time.sleep(5)
 	LeftDoubleClick(round(right/2),round(bottom/3.5))
-	#time.sleep(60*5)
-	time.sleep(60)
-	
+	time.sleep(interval)
+
+
+#print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+#print (time.localtime().tm_hour)
 while (1):
+	#if time.localtime().tm_hour>8:
 	exec() 
